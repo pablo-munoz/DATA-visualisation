@@ -14,9 +14,9 @@ st.subheader(question)
 
 # Create a connection object using Streamlit connections
 conn = st.connection("gsheets", type=GSheetsConnection)
-
+spreadsheet_url = st.secrets["gsheets"]["spreadsheet_url"]
 # Specify the spreadsheet when calling read()
-flights_df = conn.read()
+flights_df = conn.read(spreadsheet=spreadsheet_url)
 
 
 # Prepare data: aggregate total passengers per year
